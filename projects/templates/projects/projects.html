@@ -1,0 +1,64 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h1>Projects template</h1>
+ <p>Hello, you are on {{ page }} page!</p>
+
+<!-- {% if number > 10 %}
+    <p>The number which is passed is greater than 10</p><br/>
+{%elif number == 10 %}
+    <p>Who knew! The number is exactly 10</p><br/>
+{% else %}
+    <p>The Number passed is less than 10.</p><br/>
+{% endif %}
+
+<ul>
+    {% for name in names %}
+        <li>{{ name }}</li>
+    {% endfor %}
+</ul> 
+
+ <ul>
+    {% for project in projectDict %}
+        <hr/>
+        <li>Name of The Book: <a href="{% url 'project' project.id %}">{{ project.name }}</a></li>
+        <li>Author of The Book: {{ project.Author }}</li>
+        <li>Number of Pages in The Book: {{ project.pages }}</li><hr/>
+    {% endfor %}
+</ul>  -->
+<table>
+    <thead>
+        <tr>
+            <!-- <th>ID</th> -->
+            <th>Project Title</th>
+            <th>Votes</th>
+            <th>Ratio</th>
+            <th>View Project</th>
+            <th>Update Project</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for project in projectList %}
+        <tr>
+            <!-- <td>{{project.id}}</td> -->
+            <td>{{project.title}}</td>
+            <td>{{project.Votes}}</td>
+            <td>{{project.Ratio}}</td>
+            <td><a href="{% url 'project' project.id %}">View</a></td>
+            <td><a href="{% url 'delete-project' project.id %}">Delete</a></td>
+            <td><a href="{% url 'update-project' project.id %}">Update</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- <ul>
+    {% for project in projectList %}
+        <hr/>
+        <li><a href="{% url 'project' project.id %}">Name of The Book: {{ project.title }}</a></li>
+        <hr/>
+    {% endfor %}
+
+</ul> -->
+
+{% endblock content %}
